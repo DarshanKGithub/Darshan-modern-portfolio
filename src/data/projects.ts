@@ -16,7 +16,7 @@ export const projects: Project[] = [
       "A modern, performance-optimized personal portfolio built using Next.js and TypeScript to showcase projects, skills, and professional experience with a clean, recruiter-friendly design.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/DarshanKGithub/portfolio",
-    live: "https://your-portfolio-url.vercel.app/",
+    live: "https://darshan-modern-portfolio.vercel.app/",
   },
 
   {

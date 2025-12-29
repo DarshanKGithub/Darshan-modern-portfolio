@@ -57,14 +57,15 @@ export default function Contact() {
             <a href="mailto:darshankshetri8@gmail.com" className="flex gap-3">
               <Mail className="text-indigo-400" /> darshankshetri8@gmail.com
             </a>
-            <a href="https://github.com/DarshanKGithub" target="_blank">
-              <Github />
+            <a href="https://github.com/DarshanKGithub" target="_blank" className="flex gap-3">
+              <Github  /> https://github.com/DarshanKGithub
             </a>
             <a
               href="https://www.linkedin.com/in/darshan-kshetri-6a1b12253/"
               target="_blank"
+              className="flex gap-3"
             >
-              <Linkedin />
+              <Linkedin /> https://www.linkedin.com/in/darshan-kshetri-6a1b12253/
             </a>
           </div>
         </div>

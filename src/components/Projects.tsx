@@ -58,26 +58,33 @@ export default function Projects() {
               ))}
             </div>
 
-            {/* Actions */}
-            <div className="flex items-center gap-6">
-              <a
-                href={project.github}
-                target="_blank"
-                className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition"
-              >
-                <Github className="w-4 h-4" />
-                GitHub
-              </a>
+           {/* Actions */}
+<div className="flex items-center gap-6">
+  {/* GitHub Link */}
+  <a
+    href={project.github}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition"
+  >
+    <Github className="w-4 h-4" />
+    GitHub
+  </a>
 
-              <a
-                href={project.live}
-                target="_blank"
-                className="flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 transition"
-              >
-                <ExternalLink className="w-4 h-4" />
-                Live Demo
-              </a>
-            </div>
+  {/* Live Demo Link (only if exists) */}
+  {project.live && (
+    <a
+      href={project.live}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 transition"
+    >
+      <ExternalLink className="w-4 h-4" />
+      Live Demo
+    </a>
+  )}
+</div>
+
           </motion.div>
         ))}
       </div>

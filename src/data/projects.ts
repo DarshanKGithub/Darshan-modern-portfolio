@@ -20,6 +20,23 @@ export const projects: Project[] = [
   },
 
   {
+    title: "AI Developer Productivity Assistant",
+    description:
+      "A production-style AI developer assistant powered by local LLaMA 3.1, featuring real-time token streaming, developer-focused Explain/Debug/Refactor modes, and a clean frontend–backend architecture designed to mirror real-world GenAI systems.",
+    tech: [
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "LLaMA 3.1",
+      "Ollama",
+      "Streaming APIs",
+      "Tailwind CSS",
+    ],
+    github: "https://github.com/DarshanKGithub/GenAIDev-Assistant",
+    live: "", // add live link later if deployed
+  },
+
+  {
     title: "Java Workspace",
     description:
       "A personal Java workspace where I practice core Java concepts, write clean and optimized code, and solve data structures, algorithms, and problem-solving exercises to strengthen my backend and logical programming skills.",
@@ -31,7 +48,7 @@ export const projects: Project[] = [
   {
     title: "JavaScript Series",
     description:
-      "A structured JavaScript practice series where I write clean code examples and solve problems covering core concepts such as closures, promises, async/await, array methods, event handling, and real-world logic building to strengthen frontend and scripting fundamentals.",
+      "A structured JavaScript practice series covering closures, promises, async/await, array methods, DOM manipulation, and real-world logic building to strengthen frontend and scripting fundamentals.",
     tech: [
       "JavaScript",
       "ES6+",
@@ -47,7 +64,7 @@ export const projects: Project[] = [
   {
     title: "Banking Management System (Spring Boot)",
     description:
-      "A backend-focused banking management system built using Spring Boot that implements core CRUD operations such as creating accounts, depositing money, withdrawing funds, fetching all account details, and deleting accounts. The project emphasizes RESTful API design, clean service-layer architecture, and proper request handling.",
+      "A backend-focused banking management system built using Spring Boot implementing core CRUD operations such as account creation, deposits, withdrawals, and account management with a clean service-layer architecture.",
     tech: [
       "Java",
       "Spring Boot",

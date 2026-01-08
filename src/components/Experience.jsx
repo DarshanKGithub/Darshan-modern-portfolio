@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Link } from "lucide-react";
 
 export default function Experience() {
   return (
@@ -28,7 +29,7 @@ export default function Experience() {
         className="relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10"
       >
         {/* Role & Company */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-3">
           <div>
             <h3 className="text-2xl font-semibold">
               SDET Intern
@@ -38,16 +39,26 @@ export default function Experience() {
             </p>
           </div>
 
-          <p className="text-sm text-gray-400 mt-3 md:mt-0">
-            Apr 2025 – Sep 2025
-          </p>
+          <div className="flex items-center gap-3">
+            <span
+             
+              className="px-3 py-1 text-xs font-semibold rounded-full
+              bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+            >
+              Live Production System
+            </span>
+
+            <p className="text-sm text-gray-400">
+              Apr 2025 – Sep 2025
+            </p>
+          </div>
         </div>
 
         {/* Description */}
         <p className="text-gray-400 leading-relaxed mb-6 max-w-4xl">
-          Worked as an SDET Intern on a live production application, contributing
-          across frontend development, backend API design, performance
-          optimization, and automated testing for a health monitoring platform.
+          Worked as an SDET Intern on a live production health monitoring
+          application, contributing across frontend development, backend API
+          design, performance optimization, and automated testing.
         </p>
 
         {/* Responsibilities & Work */}

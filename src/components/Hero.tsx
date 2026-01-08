@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import AnimatedCounter from "./AnimatedCounter";
+
 
 export default function Hero() {
   return (
@@ -20,7 +22,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <p className="text-indigo-400 font-medium mb-4 tracking-wide">
+          <p className="text-indigo-400 font-medium mb-32 tracking-wide">
             👋 Hello, I’m Darshan Kshetri
           </p>
 
@@ -64,21 +66,26 @@ export default function Hero() {
             ))}
           </div>
 
-          {/* METRICS */}
-          <div className="mt-10 flex gap-12">
-            <div>
-              <p className="text-3xl font-bold">6+</p>
-              <p className="text-sm text-gray-400 mt-1">
-                Months Industry Experience
-              </p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold">5+</p>
-              <p className="text-sm text-gray-400 mt-1">
-                Real-world Projects
-              </p>
-            </div>
-          </div>
+      {/* METRICS */}
+<div className="mt-10 flex gap-12">
+  <div>
+    <p className="text-3xl font-bold">
+      <AnimatedCounter value={6} suffix="+" />
+    </p>
+    <p className="text-sm text-gray-400 mt-1">
+      Months Industry Experience
+    </p>
+  </div>
+
+  <div>
+    <p className="text-3xl font-bold">
+      <AnimatedCounter value={5} suffix="+" />
+    </p>
+    <p className="text-sm text-gray-400 mt-1">
+      Real-world Projects
+    </p>
+  </div>
+</div>
 
           {/* CTA */}
           <div className="mt-12 flex gap-4">

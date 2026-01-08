@@ -1,4 +1,5 @@
 import "./globals.css";
+import PageTransition from "../components/PageTransition";
 
 export const metadata = {
   title: "Darshan | Software Developer",
@@ -13,7 +14,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black text-white">
+        <PageTransition>
         {children}
+          
+        </PageTransition>
       </body>
     </html>
   );

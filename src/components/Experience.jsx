@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Link } from "lucide-react";
 
 export default function Experience() {
   return (
@@ -40,13 +39,26 @@ export default function Experience() {
           </div>
 
           <div className="flex items-center gap-3">
-            <span
-             
+            {/* Live Production Badge */}
+            <motion.span
+              animate={{
+                scale: [1, 1.05, 1],
+                boxShadow: [
+                  "0 0 0px rgba(16, 185, 129, 0.0)",
+                  "0 0 10px rgba(16, 185, 129, 0.35)",
+                  "0 0 0px rgba(16, 185, 129, 0.0)",
+                ],
+              }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               className="px-3 py-1 text-xs font-semibold rounded-full
               bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
             >
               Live Production System
-            </span>
+            </motion.span>
 
             <p className="text-sm text-gray-400">
               Apr 2025 – Sep 2025
@@ -61,7 +73,7 @@ export default function Experience() {
           design, performance optimization, and automated testing.
         </p>
 
-        {/* Responsibilities & Work */}
+        {/* Responsibilities */}
         <ul className="space-y-3 text-gray-300 leading-relaxed max-w-4xl">
           <li>
             • Built and enhanced UI using <span className="text-white">React.js</span> and{" "}

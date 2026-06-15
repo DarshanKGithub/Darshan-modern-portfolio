@@ -6,11 +6,10 @@ import { Menu, X } from "lucide-react";
 import useActiveSection from "../hooks/useActiveSection";
 
 const navLinks = [
-  { name: "Home", href: "#home", id: "home" },
-  { name: "About", href: "#about", id: "about" },
-  { name: "Experience", href: "#experience", id: "experience" },
-  { name: "Projects", href: "#projects", id: "projects" },
-  { name: "Contact", href: "#contact", id: "contact" },
+  { name: "HOME", href: "#home", id: "home" },
+  { name: "EXPERIENCE", href: "#experience", id: "experience" },
+  { name: "WORKS", href: "#projects", id: "projects" },
+  { name: "ABOUT", href: "#about", id: "about" },
 ];
 
 export default function Navbar() {
@@ -18,7 +17,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const activeSection = useActiveSection(
-    navLinks.map((link) => link.id)
+    navLinks.map((link) => link.id).concat(["contact"])
   );
 
   useEffect(() => {
@@ -29,23 +28,22 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 w-full z-50 backdrop-blur-xl transition-all
-        ${scrolled ? "bg-black/80 shadow-lg border-b border-white/10" : "bg-black/60"}
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b
+        ${scrolled ? "bg-background/90 backdrop-blur-md border-primary/10" : "bg-transparent border-transparent"}
       `}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Brand */}
-        <a href="#home" className="font-mono font-bold text-lg">
-          <span className="text-gray-400">&lt;</span>
-          Darshan
-          <span className="text-indigo-500">/&gt;</span>
+        <a href="#home" className="flex items-center gap-4 group">
+          <span className="font-medium text-primary tracking-[0.2em] uppercase text-sm">Darshan Kshetri</span>
+          <span className="w-4 h-[1px] bg-primary/20 group-hover:w-8 group-hover:bg-primary transition-all duration-300 hidden sm:block" />
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8 text-sm">
+        <div className="hidden md:flex items-center gap-10 text-xs font-semibold tracking-widest uppercase">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
 
@@ -53,29 +51,38 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className={`relative transition
-                  ${isActive ? "text-white" : "text-gray-300 hover:text-white"}
+                className={`relative transition-colors py-2
+                  ${isActive ? "text-primary" : "text-secondary hover:text-primary"}
                 `}
               >
                 {link.name}
-
-                {/* Active underline */}
-                <span
-                  className={`absolute -bottom-1 left-0 h-[2px] bg-indigo-500 transition-all
-                    ${isActive ? "w-full" : "w-0"}
-                  `}
-                />
+                {isActive && (
+                  <motion.span
+                    layoutId="navbar-indicator"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] w-4 bg-primary"
+                  />
+                )}
               </a>
             );
           })}
         </div>
 
+        {/* CTA Button */}
+        <div className="hidden md:block">
+          <a
+            href="#contact"
+            className="text-xs font-semibold uppercase tracking-widest text-primary hover:text-secondary transition-colors"
+          >
+            LET'S TALK
+          </a>
+        </div>
+
         {/* Mobile Button */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-gray-300"
+          className="md:hidden text-primary hover:text-secondary transition"
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
@@ -85,25 +92,33 @@ export default function Navbar() {
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: "auto", opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden bg-black/90 border-t border-white/10"
+          className="md:hidden bg-background border-b border-primary/10 overflow-hidden"
         >
-          <div className="flex flex-col px-6 py-6 space-y-5">
+          <div className="flex flex-col px-6 py-8 space-y-6 text-sm font-semibold tracking-widest uppercase">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
-
               return (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`transition
-                    ${isActive ? "text-white" : "text-gray-300"}
+                  className={`transition-colors
+                    ${isActive ? "text-primary border-l-2 border-primary pl-4" : "text-secondary pl-4 hover:text-primary"}
                   `}
                 >
                   {link.name}
                 </a>
               );
             })}
+            <div className="pt-6 mt-4 border-t border-primary/10 pl-4">
+              <a
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="text-primary hover:text-secondary transition-colors"
+              >
+                LET'S TALK
+              </a>
+            </div>
           </div>
         </motion.div>
       )}

@@ -3,130 +3,83 @@
 import { projects } from "../data/projects";
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
-import { easeOut } from "framer-motion";
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 8 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: easeOut },
-  },
-};
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      className="relative max-w-7xl mx-auto px-6 py-28"
-    >
-      {/* Section Header */}
-      <div className="max-w-3xl mb-16">
-        <h2 className="text-4xl font-bold mb-4">
-          Featured <span className="text-indigo-500">Projects</span>
+    <section id="projects" className="relative max-w-7xl mx-auto px-6 py-32 z-10">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 border-b border-primary/10 pb-8">
+        <h2 className="text-4xl md:text-6xl font-light text-primary tracking-tight">
+          SELECTED<br/><span className="font-medium italic">WORKS</span>
         </h2>
-        <p className="text-gray-400 leading-relaxed">
-          A selection of projects that demonstrate my experience in building
-          scalable applications, automation frameworks, and clean backend
-          systems.
+        <p className="text-sm text-secondary max-w-sm mt-6 md:mt-0 leading-relaxed font-light">
+          A collection of production-ready applications and technical problem-solving.
         </p>
       </div>
 
-      {/* Projects Grid */}
-      <div className="grid md:grid-cols-2 gap-10">
+      {/* Projects List */}
+      <div className="space-y-12">
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            variants={containerVariants}
-            className="group relative backdrop-blur-xl bg-white/5
-            border border-white/10 rounded-2xl p-7
-            hover:-translate-y-1 hover:shadow-xl
-            hover:shadow-indigo-500/10 transition-all"
+            transition={{ duration: 0.8, delay: index * 0.1 }}
+            className="group relative luxury-panel p-8 md:p-12 hover:-translate-y-1 transition-transform duration-500"
           >
-            {/* Glow Overlay */}
-            <div className="absolute inset-0 rounded-2xl bg-indigo-500/5
-            opacity-0 group-hover:opacity-100 transition pointer-events-none" />
+            <div className="grid md:grid-cols-12 gap-8 md:gap-16">
+              
+              {/* Project Info */}
+              <div className="md:col-span-4 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-2xl font-medium mb-4 text-primary tracking-wide">
+                    {project.title}
+                  </h3>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[0.65rem] font-bold uppercase tracking-widest text-secondary border border-secondary/20 px-2 py-1"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-            {/* Title */}
-            <motion.h3
-              variants={itemVariants}
-              className="text-2xl font-semibold mb-3 relative z-10"
-            >
-              {project.title}
-            </motion.h3>
+                {/* Actions */}
+                <div className="flex items-center gap-6 mt-8 md:mt-0">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary hover:text-secondary transition-colors"
+                  >
+                    <Github size={14} />
+                    Source
+                  </a>
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary hover:text-secondary transition-colors"
+                    >
+                      <ExternalLink size={14} />
+                      Live
+                    </a>
+                  )}
+                </div>
+              </div>
 
-            {/* Description */}
-            <motion.p
-              variants={itemVariants}
-              className="text-gray-400 leading-relaxed mb-5 relative z-10"
-            >
-              {project.description}
-            </motion.p>
+              {/* Project Description */}
+              <div className="md:col-span-8 flex items-center">
+                <p className="text-sm md:text-base text-secondary leading-loose font-light border-l border-primary/10 pl-6 md:pl-12">
+                  {project.description}
+                </p>
+              </div>
 
-            {/* Tech Stack */}
-            <motion.div
-              variants={containerVariants}
-              className="flex flex-wrap gap-2 mb-6 relative z-10"
-            >
-              {project.tech.map((tech) => (
-                <motion.span
-                  key={tech}
-                  variants={itemVariants}
-                  className="px-3 py-1 text-xs rounded-full
-                  border border-white/15 text-gray-300
-                  bg-white/5"
-                >
-                  {tech}
-                </motion.span>
-              ))}
-            </motion.div>
-
-            {/* Actions */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="flex items-center gap-6 relative z-10"
-            >
-              <motion.a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ x: 3 }}
-                className="flex items-center gap-2 text-sm
-                text-gray-300 hover:text-white transition"
-              >
-                <Github className="w-4 h-4" />
-                GitHub
-              </motion.a>
-
-              {project.live && (
-                <motion.a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 3 }}
-                  className="flex items-center gap-2 text-sm
-                  text-indigo-400 hover:text-indigo-300 transition"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Live Demo
-                </motion.a>
-              )}
-            </motion.div>
+            </div>
           </motion.div>
         ))}
       </div>

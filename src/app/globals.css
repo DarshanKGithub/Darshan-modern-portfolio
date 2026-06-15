@@ -1,30 +1,77 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #F4F4F5;
+  --color-foreground: #1A1D20;
+  --color-primary: #1A1D20;
+  --color-secondary: #52525B;
+  --color-accent-1: #4f46e5;
+  --color-accent-2: #ec4899;
+  --color-accent-3: #06b6d4;
+  
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    /* Remove any default smooth scrolling to avoid conflicts with custom scroll setups later if needed */
+  }
+
+  /* Luxury Typography Utilities */
+  h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .luxury-border {
+    border: 1px solid rgba(26, 29, 32, 0.1);
+  }
+  
+  .luxury-panel {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(26, 29, 32, 0.05);
+  }
+
+  /* Clean minimal button */
+  .btn-minimal {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid rgba(26, 29, 32, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-minimal:hover {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .text-micro {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+  }
 }
 
-section {
-  scroll-margin-top: 80px;
+/* Subtle grain texture overlay for editorial feel */
+.bg-grain {
+  position: relative;
+}
+.bg-grain::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 50;
 }
